@@ -1,3 +1,9 @@
+#Text
+text.usetex : True
+#Font
+font.family : serif
+font.serif : 'Computer Modern'
+#Axes
 axes.titlesize : 18
 axes.labelsize : 18
 #Lines
