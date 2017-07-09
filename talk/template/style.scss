@@ -1,9 +1,9 @@
 // Theme
 // ---------------------------------------------------------------------------
 
-$primary          : #3F51B5;
-$secondary        : #009688;
-$tertiary         : #757575;
+$primary          : rgb(29,71,135);
+$secondary        : #5e6062;
+$tertiary         : rgb(147,147,147);
 $light            : #FFF;
 $dark             : #333;
 $text-dark        : #212121; 
@@ -11,12 +11,14 @@ $text-light       : $light;
 $code-background  : #F8F8F8;
 $overlay          : transparentize(#000, .5);
 $font-size        : 28px;
-$font-size-impact : 128px;
+$font-size-impact : 80px;
 $font             : Arial, Helvetica, sans-serif;
 $font-title       : Arial, Helvetica, sans-serif;
 $font-fixed       : 'Lucida Console', Monaco, monospace;
 $margin           : 20px;
 $iframe-scale     : 1.5;
+$logo-height      : 40px;
+$strip-height     : $logo-height + 22;
 
 
 // CSS Base
@@ -31,6 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 { color: $primary; }
 h2 { color: $secondary; }
 h3 { color: $tertiary; }
+h4, h5, h6 { color: $text-dark; }
 li { margin-bottom: .25em; };
 pre, code {
   text-align: left;
@@ -60,7 +63,7 @@ blockquote {
 
 .remark-slide-content {
   font-size: $font-size;
-  padding: 1em 2em;
+  padding: 0em 1em 1em 1em;
   color: $text-dark;
   background-size: cover;
 }
@@ -95,18 +98,52 @@ blockquote {
 }
 
 .bottom-bar {
-  background-color: $primary;
-  color: $text-light;
+  background-color: $light;
+  color: $text-dark;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   font-size: 20px;
-  padding: .8em;
+  padding: .4em;
   text-align: left;
   z-index: 1;
   p { margin: 0;}
   .impact &, .full & { display: none; }
+}
+
+.colorstrip {
+  background-color: $primary;
+  position: absolute;
+  height: $strip-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 20px;
+  padding: .4em;
+  text-align: left;
+  z-index: 1;
+  p { margin: 0;}
+  .impact &, .full & { display: none; }
+}
+
+.school-logo {
+  height: $logo-height;
+  float: right;
+  padding-right: 10px;
+  vertical-align: bottom;
+}
+
+.fa{
+  color: $primary;
+}
+
+table {
+  border-collapse: collapse;
+}
+th, td {
+  padding: 4px;
+  border: 1px solid black;
 }
 
 
