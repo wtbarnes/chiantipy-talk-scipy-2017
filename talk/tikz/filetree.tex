@@ -1,0 +1,44 @@
+% Author: Frantisek Burian
+\documentclass[border=5pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\definecolor{primary}{RGB}{29,71,135}
+\definecolor{secondary}{RGB}{94,96,98}
+\begin{document}
+\tikzstyle{every node}=[draw=white,anchor=west, text=white, fill=primary]
+\tikzstyle{breaker}=[fill=white,text=black,text height=2.0ex]
+\tikzstyle{filetype}=[draw=white,text=black,fill=white]
+\begin{tikzpicture}[%
+                    grow via three points={one child at (0.2,-0.5) and
+                                           two children at (0.2,-0.5) and (0.2,-1.0)},
+                    edge from parent path={(\tikzparentnode.south) |- (\tikzchildnode.west)}]
+  \node {CHIANTI}
+    child { node {H}}
+    child { node {He}}		
+    child  { node[breaker,draw=none] {$\vdots$}}
+    child { node {Fe}
+      child { node {Fe I}}
+      child  { node[breaker,draw=none] {$\vdots$}}
+      child { node {Fe IX}
+        child { node[filetype] {\texttt{.elvlc}}}
+        child { node[filetype] {\texttt{.wgfa}}}
+        child { node[filetype] {\texttt{.scups}}}
+      }
+      child [missing]{}
+      child [missing]{}
+      child [missing]{}
+      child  { node[breaker,draw=none] {$\vdots$}}
+      child { node {Fe XXVII}}
+    }
+    child [missing]{}
+    child [missing]{}
+    child [missing]{}
+    child [missing]{}
+    child [missing]{}
+    child [missing]{}
+    child [missing]{}
+    child [missing]{}
+    child  { node[breaker,draw=none] {$\vdots$}}
+    child {node {Zn}};
+\end{tikzpicture}
+\end{document}
