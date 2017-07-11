@@ -68,12 +68,19 @@ class: middle, center
 class: middle,center
 # What is CHIANTI?
 ---
-Placeholder: put energy level/ion/element table graphic (Fig 1 from paper) here
+class: middle,center
+
+Placeholder put energy level/ion/element table graphic (Fig 1 from paper) here
 
 ???
 Currently 1.7 GB of ASCII text files
 
-Thousands of transitions for ions of elements H through Zn
+Thousands of  transitions for ions of elements H through Zn
+
+Very useful for calculating optically thin emission/intensity
+
+Compiled primarily for analysis of solar spectra
+
 ---
 background-image: url("img/timeline.png")
 background-size: contain
@@ -194,14 +201,19 @@ Suggestions welcome on how to deal with database as a dependency in conda/conda-
 * Ion &ndash; "building block" of database
 * Energy levels (`.elvlc`)
 * Transitions between levels (`.wgfa`)
+* 
 ]
 .col-4[
   <img src="img/filetree.png" width="275x">
 ]
 ???
+ChiantiPy objects can be placed into two categories: per ion and composite ion
+
 Talk about ion object
 
-Information stored on the object
+Information stored on the object (elvlc, wgfa, scups)
+
+Abundance
 
 Emissivity and level population calculations
 
@@ -236,6 +248,8 @@ AIA Response functions
 Forward modeling -- movie showing EIS lines/maps of an AR from our synthesizAR code
 
 ---
+class: middle
+
 # Resources
 
 <i class="fa fa-github-alt fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>
