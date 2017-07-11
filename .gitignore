@@ -1,3 +1,6 @@
+# No PDFs
+*.pdf
+
 # Ignore temporary backslide files
 talk/.tmp/
 
