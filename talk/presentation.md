@@ -166,7 +166,26 @@ Established infrastructure, but release schedule needs work
 Follow Astropy package template
 
 PRs merged only when tests passed, informal review
+---
 
+# Installation
+#### GitHub (recommended)
+```shell
+$ git clone https://github.com/chianti-atomic/ChiantiPy.git
+$ cd ChiantiPy && python setup.py install
+```
+#### PyPI: 
+```shell 
+$ pip install ChiantiPy
+```
+#### conda/conda-forge
+* Work in progress
+* Difficulty is the database &ndash; how to make 1.7 GB of data a dependency?
+
+???
+Release schedule not yet well established
+
+Suggestions welcome on how to deal with database as a dependency in conda/conda-forge
 ---
 
 # The `ion` Object
@@ -215,25 +234,7 @@ Combine line + continuum for many ions, transitions
 AIA Response functions
 
 Forward modeling -- movie showing EIS lines/maps of an AR from our synthesizAR code
----
-# Resources
-#### GitHub (recommended)
-```shell
-$ git clone https://github.com/chianti-atomic/ChiantiPy.git
-$ cd ChiantiPy && python setup.py install
-```
-#### PyPI: 
-```shell 
-$ pip install ChiantiPy
-```
-#### conda/conda-forge
-* Work in progress
-* Difficulty is the database &ndash; how to make 1.7 GB of data a dependency?
 
-???
-Release schedule not yet well established
-
-Suggestions welcome on how to deal with database as a dependency in conda/conda-forge
 ---
 # Resources
 
@@ -261,6 +262,6 @@ class: middle
 * <img src="img/sunpy_logo.svg" width="60px"> SunPy project
   * Stuart Mumford (NSO/DKIST)
   * David Pérez-Suárez (UCL/MSSL)
-* <img src="img/astropy_logo.svg" width="50px"> Astropy project
+* <img src="img/astropy_logo.svg" width="40px"> Astropy project
 * Stephen Bradshaw (Rice)
 
