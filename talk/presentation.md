@@ -65,50 +65,80 @@ class: middle, center
 ## A Python interface to the CHIANTI atomic database
 
 ---
+class: middle,center
 # What is CHIANTI?
-
 ---
-background-image: url("img/chianti_tree.png")
-background-size: contain
-
-# The CHIANTI Project
+Placeholder: put energy level/ion/element table graphic (Fig 1 from paper) here
 
 ???
-Explain chart, hierarchy
+Currently 1.7 GB of ASCII text files
 
-Efforts of the CHIANTI team over the years have been focused on database and IDL code
+Thousands of transitions for ions of elements H through Zn
+---
+background-image: url("img/timeline.png")
+background-size: contain
 
-ChiantiPy developed by Ken Dere
+# Some history...
 
-Solar physics slow to adopt Python so IDL still primary interface to the data
+???
+Quick description of CHIANTI
+
+Progress from CHIANTI to ChiantiPy
+
+* CHIANTI
+  * CHIANTI consolidated many atomic datasets from the literature
+  * Goal was to have single, well-maintained, and freely-available database
+  * CHIANTI name not an acronym, but rather because of connection to Arcetri and Tuscany (mention Brunella)
+  * What role it has played in interpreting data from instruments in solar physics, use in astrophysics
+  * Basically, make the point that CHIANTI has been an integral part of solar 
+
+
+* ChiantiPy
+  * Efforts of the CHIANTI team over the years have been focused on database and IDL code
+  * ChiantiPy developed by Ken Dere
+  * Solar physics slow to adopt Python so IDL still primary interface to the data
+
+
+Note from paper reviewer:
+However, for your talk, I would like to recommend to discuss more about your insights about development in Python and less about equations and too detailed physics. This will be more appealing to the audience.
 ---
 class: full,middle,center
 background-image: url("img/chianti_team.png")
 
----
-Quotes with pictures from a few team members
-
-CHIANTI consolidated many atomic datasets from the literature
-
-Goal was to have single, well-maintained, and freely-available database
-
-CHIANTI name not an acronym, but rather because of connection to Arcetri and Tuscany
-
-What role it has played in interpreting data from instruments in solar physics, use in astrophysics
-
-Basically, make the point that CHIANTI has been an integral part of solar 
-
 ???
-Note from paper reviewer:
-However, for your talk, I would like to recommend to discuss more about your insights about development in Python and less about equations and too detailed physics. This will be more appealing to the audience.
+Explain who members are, where they are currently located
+
+Backdrop
+
+Point out K. Dere
+
+Helen --> Steve --> Me
 ---
-class: middle,full
+
 # What is ChiantiPy
+
+* Python interface to the CHIANTI atomic database
+* Perform common calculations with data
+  * Line emission (`ion`)
+  * Continuum emission (`Continuum`)
+  * Ionization equilibrium (`ioneq`)
+  * Composite Spectra (`spectrum`)
+* **NOT** a direct translation of the IDL code, but provides the same capabilities
+* Move from *freely available* to truly *open source*
+  * Make development a community effort, e.g. SunPy and Astropy
+  * Embrace modern developement practices
+* Leverage full power of Python and SciPy stack
 
 ???
 Return to original question
 
 Basic description before launching into details of the code
+
+* A replacement for the IDL client, but not a direct translation
+* Develop Python in the open (GitHub) to encourage many contributors from the community
+* Relieve burden from CHIANTI developers (time and money in short supply), push towards Python adoption by solar community
+
+Organized around several core modules (others too but we will focus on these four)
 ---
 
 # Development and Infrastructure
@@ -116,16 +146,16 @@ Basic description before launching into details of the code
 [![Documentation Status](http://readthedocs.org/projects/chiantipy/badge/?version=latest)](http://chiantipy.readthedocs.io/en/latest/?badge=latest)
 [![Coverage Status](https://coveralls.io/repos/github/chianti-atomic/ChiantiPy/badge.svg?branch=master)](https://coveralls.io/github/chianti-atomic/ChiantiPy?branch=master)
 
+* Currently **v0.7**, v0.7.1 coming soon
+* Licensed under ISC Software License
 * All development done in the open on GitHub
   * 17 open issues
-  * 0 to 1 PRs per week (99 merged)
-  * PRs merged only when tests passed, informal review
+  * 0 to 1 PRs per week (~100 merged in past year)
 * Automatic builds on Travis CI
   * Python 2.7, 3.4, 3.5 (3.6 coming soon!)
   * Minimal test suite, but this is a big `TODO`
 * Automatic documentation builds on Read the Docs
 * Test coverage reports via Coveralls
-* Follow Astropy package template
 * Testing and docs infrastructure provided by [`astropy-helpers`](https://github.com/astropy/astropy-helpers)
 
 ???
@@ -133,9 +163,22 @@ Small developement community &ndash; Dere, Barnes, a few other minor contributor
 
 Established infrastructure, but release schedule needs work
 
+Follow Astropy package template
+
+PRs merged only when tests passed, informal review
+
 ---
+
 # The `ion` Object
 
+.col-8[
+* Ion &ndash; "building block" of database
+* Energy levels (`.elvlc`)
+* Transitions between levels (`.wgfa`)
+]
+.col-4[
+  <img src="img/filetree.png" width="275x">
+]
 ???
 Talk about ion object
 
@@ -155,26 +198,42 @@ Physics of continuum radiation: free-free, free-bound
 Code examples and plots
 
 Note this module has been redesigned in 0.7.1
+---
+# `ioneq` Module
 
+???
+Brief example of ionization equilibrium calculation, physics behind it, some plots
 ---
 # `spectrum` Module
 
 ???
 Combine line + continuum for many ions, transitions
 ---
-# Resources
-* GitHub (recommended)
-  * `git clone https://github.com/chianti-atomic/ChiantiPy.git`
-  * `cd ChiantiPy && python setup.py install`
-* PyPI: `pip install ChiantiPy`
-* conda/conda-forge
-  * Work in progress
-  * Difficulty is the database &ndash; how to make 1.7 GB of data a dependency?
-  * Suggestions welcome!
-* Release schedule not yet well established
-  * Currently v0.7
-  * v0.7.1 to be released soon
+# Applications
 
+???
+AIA Response functions
+
+Forward modeling -- movie showing EIS lines/maps of an AR from our synthesizAR code
+---
+# Resources
+#### GitHub (recommended)
+```shell
+$ git clone https://github.com/chianti-atomic/ChiantiPy.git
+$ cd ChiantiPy && python setup.py install
+```
+#### PyPI: 
+```shell 
+$ pip install ChiantiPy
+```
+#### conda/conda-forge
+* Work in progress
+* Difficulty is the database &ndash; how to make 1.7 GB of data a dependency?
+
+???
+Release schedule not yet well established
+
+Suggestions welcome on how to deal with database as a dependency in conda/conda-forge
 ---
 # Resources
 
@@ -199,11 +258,9 @@ class: middle
   * Giulio Del Zanna (Cambridge)
   * Peter Young (GSFC)
   * and many more...
-* SunPy project
+* <img src="img/sunpy_logo.svg" width="60px"> SunPy project
   * Stuart Mumford (NSO/DKIST)
-  * David Pérez-Suárez (UCL)
-* Astropy project
+  * David Pérez-Suárez (UCL/MSSL)
+* <img src="img/astropy_logo.svg" width="50px"> Astropy project
 * Stephen Bradshaw (Rice)
-* Built with [backslide](https://github.com/sinedied/backslide) and [Remark.js](https://github.com/gnab/remark)
-
 
