@@ -51,21 +51,65 @@ will.t.barnes@gmail.com
 .col-2[
 &zwnj;
 ]
+
 ---
-# But first, some history...
-## CHIANTI
-* atomic database
-* accompanying IDL code 
+# What is CHIANTI?
 
-## ChiantiPy
+---
+background-image: url("img/chianti_tree.png")
+background-size: contain
 
+# The CHIANTI Project
+
+???
+Explain chart, hierarchy
+
+Efforts of the CHIANTI team over the years have been focused on database and IDL code
+
+ChiantiPy developed by Ken Dere
+
+Solar physics slow to adopt Python so IDL still primary interface to the data
 ---
 class: full,middle,center
 background-image: url("img/chianti_team.png")
 
 ---
+Quotes with pictures from a few team members
 
+CHIANTI consolidated many atomic datasets from the literature
+
+Goal was to have single, well-maintained, and freely-available database
+
+CHIANTI name not an acronym, but rather because of connection to Arcetri and Tuscany
+
+What role it has played in interpreting data from instruments in solar physics, use in astrophysics
+
+Basically, make the point that CHIANTI has been an integral part of solar 
+
+???
+Note from paper reviewer:
+However, for your talk, I would like to recommend to discuss more about your insights about development in Python and less about equations and too detailed physics. This will be more appealing to the audience.
+---
+
+# Development and Infrastructure
+[![Build Status](https://travis-ci.org/chianti-atomic/ChiantiPy.svg?branch=master)](https://travis-ci.org/chianti-atomic/ChiantiPy)
+[![Documentation Status](http://readthedocs.org/projects/chiantipy/badge/?version=latest)](http://chiantipy.readthedocs.io/en/latest/?badge=latest)
+[![Coverage Status](https://coveralls.io/repos/github/chianti-atomic/ChiantiPy/badge.svg?branch=master)](https://coveralls.io/github/chianti-atomic/ChiantiPy?branch=master)
+
+* All development done in the open on GitHub
+* Automatic builds on Travis CI
+  * Python 2.7, 3.4, 3.5 (3.6 coming soon!)
+  * PRs not
+  * Documentation builds with Sphinx
+  * Minimal test suite, but this is a big `TODO`
+* Automatic documentation builds on Read the Docs
+* Test coverage reports via Coveralls
+* Follow Astropy package template
+* Testing and docs infrastructure provided by [astropy-helpers](https://github.com/astropy/astropy-helpers)
+
+---
 # Resources
+
 .col-2[&zwnj;]
 .col-8[
 <i class="fa fa-github-alt fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>
