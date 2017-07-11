@@ -1,0 +1,37 @@
+% A simple Tree
+% Author: Stefan Kottwitz
+% https://www.packtpub.com/hardware-and-creative/latex-cookbook
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usetikzlibrary{shapes.geometric, arrows}
+\definecolor{primary}{RGB}{29,71,135}
+\definecolor{secondary}{RGB}{94,96,98}
+\tikzstyle{box} = [rectangle, rounded corners, text centered, draw=white, fill=primary,text=white,]
+\tikzstyle{ghost} = [rectangle, rounded corners, text centered, draw=white]
+\tikzstyle{arrow} = [latex-latex new, ultra thick, ->, >=stealth, draw=secondary]
+\begin{document}
+\begin{tikzpicture}[node distance=5cm, sibling distance=.5cm]
+  % Draw nodes
+  \node (db)[box,text width=6.5cm]{\textbf{CHIANTI Database} \\
+        $\bullet$ First version released in 1996 \\
+        $\bullet$ Currently 1.7 GB of ASCII text files \\
+        $\bullet$ Thousands of transitions for ions of elements H through Zn
+  };
+  \node (spacer)[ghost, below of=db]{};
+  \node (py)[box, left of=spacer, text width=7cm]{\textbf{ChiantiPy} \\
+        $\bullet$ Developed by K. Dere beginning in 2003 \\
+        $\bullet$ Released on SourceForge in 2009, GitHub in 2016 \\
+        $\bullet$ Leverage full SciPy stack \\
+        $\bullet$ Growing user community
+  };
+  \node (idl)[box, right of=spacer, text width=7cm]{\textbf{CHIANTI-IDL} \\
+        $\bullet$ Original software distributed with database \\
+        $\bullet$ Most popular interface to CHIANTI data \\
+        $\bullet$ Freely distributed, but requires IDL license
+  };
+  % Draw arrows
+  \draw [arrow] (db) -- (py);
+  \draw [arrow] (db) -- (idl);
+\end{tikzpicture}
+\end{document}
