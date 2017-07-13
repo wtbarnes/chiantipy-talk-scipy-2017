@@ -42,7 +42,9 @@ pre, code {
   color: $secondary;
   background: $code-background;
 }
-a, a:visited, a:hover, a:active { color: $text-dark; }
+a {text-decoration: none;}
+a,a:visited {color: $text-dark;}
+a:hover { color: $tertiary; }
 img { vertical-align: inherit; }
 blockquote {
   border-left: 8px solid;
@@ -137,6 +139,9 @@ blockquote {
 
 .fa{
   color: $primary;
+}
+.fa:hover{
+  color: $tertiary;
 }
 
 table {
