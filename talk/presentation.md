@@ -272,8 +272,8 @@ class: middle
 ```python
 import ChiantiPy.tools.filters as ch_filters
 wavelength = np.arange(2600,2900,0.1)
-fe5_ion.spectrum(wavelength,filter=(ch_filters.lorentz,5))
-fe5_ion.spectrumPlot(index=np.argmax(fe5_ion.IoneqOne))
+fe5.spectrum(wavelength,filter=(ch_filters.lorentz,5))
+fe5.spectrumPlot(index=np.argmax(fe5.IoneqOne))
 plt.ylim([0,3.1e-27])
 ```
 <img src="img/spec_plot_fe5.png" style="margin:auto;display:block;" width="550px">
