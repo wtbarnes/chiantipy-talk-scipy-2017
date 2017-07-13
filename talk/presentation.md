@@ -26,51 +26,48 @@ class: impact
 ##### <sup id="gm">2</sup> Dept. of Physics & Astronomy, George Mason University, Fairfax, VA  
 ###### Built with [backslide](https://github.com/sinedied/backslide) and [Remark.js](https://github.com/gnab/remark)
 ---
-
+class: middle
 
 # Contact Info
-.col-2[
-&zwnj;
+.col-1[
+  &zwnj;
 ]
-.col-8[
-<i class="fa fa-github-alt fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>
-<a href="https://github.com/wtbarnes">wtbarnes</a>
+.col-4[
+<a href="https://github.com/wtbarnes">
+<i class="fa fa-github-alt fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>wtbarnes</a>
 
+<a href="https://twitter.com/wtbarnes_">
 <i class="fa fa-twitter fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>
-<a href="https://twitter.com/wtbarnes_">wtbarnes_</a>
+wtbarnes_</a>
+]
+.col-7[
+<a href="http://wtbarnes.github.io/">
+<i class="fa fa-globe fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>wtbarnes.github.io</a>
 
-<i class="fa fa-globe fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>
-<a href="http://wtbarnes.github.io/">wtbarnes.github.io</a>
-
-<i class="fa fa-envelope fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>
 <a href="mailto:will.t.barnes@gmail.com">
-will.t.barnes@gmail.com
-</a>
+<i class="fa fa-envelope fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>will.t.barnes@gmail.com</a>
 ]
 
-.col-2[
-&zwnj;
-]
 ---
-class: middle, center
-# What is ChiantiPy?
---
-
-## A Python interface to the CHIANTI atomic database
-
+class:full,middle,center
+background-image: url("img/sdo_aia_211.png")
+background-size: contain
 ---
-class: middle, center
-
-# ~~What is ChiantiPy?~~
-## A Python interface to the CHIANTI atomic database
-
+class:full,middle,center
+background-image: url("img/iris_20150428_100823_0.gif")
+background-size: contain
+---
+class:full,middle,center
+background-image: url("img/hinode_eis_fe12_195.png")
+background-size: contain
 ---
 class: middle,center
-# What is CHIANTI?
+# CHIANTI
+## An Atomic Database for Diagnostics of Astrophysical Plasmas
 ---
-class: middle,center
-
-Placeholder put energy level/ion/element table graphic (Fig 1 from paper) here
+class: full,middle,center
+background-image: url("img/all_lines.png")
+background-size: contain
 
 ???
 Currently 1.7 GB of ASCII text files
@@ -201,7 +198,7 @@ Suggestions welcome on how to deal with database as a dependency in conda/conda-
 * Ion &ndash; "building block" of database
 * Energy levels (`.elvlc`)
 * Transitions between levels (`.wgfa`)
-* 
+* *Line emission* from (primarily) 
 ]
 .col-4[
   <img src="img/filetree.png" width="275x">
@@ -221,6 +218,8 @@ Some equations, code examples, plots
 
 Basic physics of line emission
 ---
+# The `ion` Object
+---
 # `Continuum` Module
 
 ???
@@ -231,6 +230,14 @@ Code examples and plots
 Note this module has been redesigned in 0.7.1
 ---
 # `ioneq` Module
+
+* Ion population fractions (primarily) a function of *temperature*
+* Assuming *ionization equilibrium*, population fraction of ion `\(i\)` of element `\(X\)` given by,
+
+$$ I\_{i−1}X\_{i−1} + R\_iX\_{i+1} = I\_iX\_i + R\_{i−1}X\_i $$
+
+* Solve iteratively using ionization (`\(I_i\)`) and recombination (`\(R_i\)`) from CHIANTI
+* Can use data to solve *non-equilibrium ionization* equations
 
 ???
 Brief example of ionization equilibrium calculation, physics behind it, some plots
@@ -243,27 +250,32 @@ Combine line + continuum for many ions, transitions
 # Applications
 
 ???
-AIA Response functions
-
-Forward modeling -- movie showing EIS lines/maps of an AR from our synthesizAR code
-
+AIA Response functions--show transitions for a few Fe ions superimposed on 1-2 AIA wavelength passbands side-by-side with temperature response function
 ---
-class: middle
+class:middle,center,full
+background-image: url("img/hinode_eis_fe12_195.gif")
+background-size: contain
+---
+class:middle
 
 # Resources
+.col-6[
+<a href="https://github.com/chianti-atomic/ChiantiPy">
+<i class="fa fa-github-alt fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>chianti-atomic/ChiantiPy</a>
 
-<i class="fa fa-github-alt fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>
-<a href="https://github.com/chianti-atomic/ChiantiPy">chianti-atomic/ChiantiPy</a>
+<a href="http://chiantipy.readthedocs.io/en/latest/">
+<i class="fa fa-book fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>chiantipy.readthedocs.io</a>
 
-<i class="fa fa-book fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>
-<a href="http://chiantipy.readthedocs.io/en/latest/">chiantipy.readthedocs.io</a>
+<a href="http://www.chiantidatabase.org/">
+<i class="fa fa-globe fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>CHIANTI Webpage</a>
+]
+.col-6[
+<a href="https://groups.google.com/forum/#!forum/chianti">
+<i class="fa fa-google fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>CHIANTI Mailing List</a>
 
-<i class="fa fa-globe fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>
-<a href="http://www.chiantidatabase.org/">CHIANTI Webpage</a>
-
-<i class="fa fa-google fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>
-<a href="https://groups.google.com/forum/#!forum/chianti">CHIANTI Mailing List</a>
-
+<a href="http://conference.scipy.org/proceedings/scipy2017/will_barnes.html">
+<i class="fa fa-file-text-o fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>2017 SciPy Proceedings</a>
+]
 ---
 class: middle
 
