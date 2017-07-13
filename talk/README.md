@@ -1,5 +1,7 @@
 # SciPy 2017 ChiantiPy Talk
-All materials for my talk on ChiantiPy at the 2017 SciPy conference
+[![Build Status](https://travis-ci.org/wtbarnes/chiantipy-talk-scipy-2017.svg?branch=master)](https://travis-ci.org/wtbarnes/chiantipy-talk-scipy-2017)
+
+All materials for my talk on ChiantiPy at the [2017 SciPy conference](https://scipy2017.scipy.org/ehome/220975/493388/)
 
 ## Outline
 * Introduction
