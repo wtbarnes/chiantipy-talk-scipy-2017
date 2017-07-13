@@ -25,6 +25,11 @@ class: impact
 ##### <sup id="rice">1</sup> Dept. of Physics & Astronomy, Rice University, Houston, TX 
 ##### <sup id="gm">2</sup> Dept. of Physics & Astronomy, George Mason University, Fairfax, VA  
 ###### Built with [backslide](https://github.com/sinedied/backslide) and [Remark.js](https://github.com/gnab/remark)
+
+???
+Thank organizers for giving me a talk
+
+Thank donors for financial support to attend 
 ---
 class: middle
 
@@ -63,7 +68,7 @@ background-size: contain
 ---
 class: middle,center
 # CHIANTI
-## An Atomic Database for Diagnostics of Astrophysical Plasmas
+## "An Atomic Database for Diagnostics of Astrophysical Plasmas"
 ---
 class: full,middle,center
 background-image: url("img/all_lines.png")
@@ -86,6 +91,8 @@ background-size: contain
 
 ???
 Quick description of CHIANTI
+
+Cover first two points, flip to team picture, flip back and then...
 
 Progress from CHIANTI to ChiantiPy
 
@@ -201,7 +208,7 @@ Suggestions welcome on how to deal with database as a dependency in conda/conda-
 * *Line emission* from (primarily) 
 ]
 .col-4[
-  <img src="img/filetree.png" width="275x">
+  <img src="img/filetree.png" width="275px">
 ]
 ???
 ChiantiPy objects can be placed into two categories: per ion and composite ion
@@ -221,6 +228,8 @@ Basic physics of line emission
 # The `ion` Object
 ---
 # `Continuum` Module
+* Free-free (*bremsstrahlung*)
+* Free-bound
 
 ???
 Physics of continuum radiation: free-free, free-bound
@@ -231,21 +240,47 @@ Note this module has been redesigned in 0.7.1
 ---
 # `ioneq` Module
 
-* Ion population fractions (primarily) a function of *temperature*
+* Ion charge state (primarily) a function of *temperature*
 * Assuming *ionization equilibrium*, population fraction of ion `\(i\)` of element `\(X\)` given by,
 
 $$ I\_{i−1}X\_{i−1} + R\_iX\_{i+1} = I\_iX\_i + R\_{i−1}X\_i $$
 
+* **Sink:** ionization from lower levels, recombination from upper levels
+* **Source:** recbombination to lower levels, ionization to upper levels
 * Solve iteratively using ionization (`\(I_i\)`) and recombination (`\(R_i\)`) from CHIANTI
-* Can use data to solve *non-equilibrium ionization* equations
+* Use data to solve *non-equilibrium ionization* equations as well
 
 ???
 Brief example of ionization equilibrium calculation, physics behind it, some plots
+---
+
+```python
+ioneq_chianti = ch.ioneq('Fe')
+ioneq_chianti.load()
+```
+or
+```python
+temperature = np.logspace(3.5,9.5,500)
+ioneq_custom = ch.ioneq('Fe')
+ioneq_custom.calculate(temperature)
+```
+<img src="img/fe_ioneq.png" width="830px">
+
+???
+Explain different curves
+
+Say where the data goes, e.g. Temperature and Ioneq attributes on the classes
 ---
 # `spectrum` Module
 
 ???
 Combine line + continuum for many ions, transitions
+
+Only code plus figures, no equations
+
+Just explain composite of line emission from many ions+continuum
+
+Discuss different 
 ---
 # Applications
 
