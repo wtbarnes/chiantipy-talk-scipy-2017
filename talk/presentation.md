@@ -20,7 +20,7 @@ class: impact
 <h1><img src="img/chiantipy-logo.png" height="150px" style="vertical-align:bottom">{{title}}</h1>
 ## A Python Package for Astrophysical Spectroscopy
 ### 2017 SciPy Conference &ndash; Austin, TX
-## Will Barnes<sup id="rice">1</sup>, Kenneth Dere<sup id="gm">2</sup>
+## Will Barnes<sup id="rice">1</sup>, Ken Dere<sup id="gm">2</sup>
 ### 14 July 2017
 ##### <sup id="rice">1</sup> Dept. of Physics & Astronomy, Rice University, Houston, TX 
 ##### <sup id="gm">2</sup> Dept. of Physics & Astronomy, George Mason University, Fairfax, VA  
@@ -128,7 +128,7 @@ Point out K. Dere
 Helen --> Steve --> Me
 ---
 
-# What is ChiantiPy
+# What is ChiantiPy?
 
 * Python interface to the CHIANTI atomic database
 * Perform common calculations with data
@@ -179,6 +179,11 @@ Established infrastructure, but release schedule needs work
 Follow Astropy package template
 
 PRs merged only when tests passed, informal review
+---
+class:middle,center
+background-image: url("img/OA_logo.png")
+background-size: contain
+
 ---
 
 # Installation
@@ -358,10 +363,15 @@ Explain different curves
 Say where the data goes, e.g. Temperature and Ioneq attributes on the classes
  
 ---
+class:middle,center
 # Applications
 
-???
-AIA Response functions--show transitions for a few Fe ions superimposed on 1-2 AIA wavelength passbands side-by-side with temperature response function
+---
+class:middle,center
+
+<img src="img/github_pr_snapshot.png" width="800px">
+<img src="img/response_211.png" width="800px">
+
 ---
 class:middle,center,full
 background-image: url("img/hinode_eis_fe12_195.gif")
