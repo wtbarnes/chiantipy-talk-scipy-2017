@@ -29,7 +29,10 @@ class: impact
 ???
 Thank organizers for giving me a talk
 
-Thank donors for financial support to attend 
+Thank donors for financial support to attend
+
+Info about me
+
 ---
 class: middle
 
@@ -53,6 +56,10 @@ wtbarnes_</a>
 <i class="fa fa-envelope fa-3x" aria-hidden="true" style="vertical-align:middle; padding-right:10px;"></i>will.t.barnes@gmail.com</a>
 ]
 
+???
+Mention URL at bottom of the page to find slides at
+
+solar physicist, intro to images
 ---
 class:full,middle,center
 background-image: url("img/sdo_aia_211.png")
@@ -69,15 +76,27 @@ background-size: contain
 class: middle,center
 # CHIANTI
 ## "An Atomic Database for Diagnostics of Astrophysical Plasmas"
+### Collaboration between:
+#### George Mason University
+#### University of Michigan
+#### University of Cambridge
+
+???
+High-temperature, low-density optically-thin plasmas (EUV and x-ray)
+
 ---
 class: full,middle,center
 background-image: url("img/all_lines.png")
 background-size: contain
 
 ???
+CHIANTI "Periodic table" &ndash; charge state on x, elements on y, color/text show # of levels
+
 Currently 1.7 GB of ASCII text files
 
-Thousands of  transitions for ions of elements H through Zn
+Thousands of levels for ions of elements H through Zn
+
+Sometimes hundreds of thousands of transitions, e.g. Fe IX
 
 Very useful for calculating optically thin emission/intensity
 
@@ -97,7 +116,6 @@ Cover first two points, flip to team picture, flip back and then...
 Progress from CHIANTI to ChiantiPy
 
 * CHIANTI
-  * High-temperature, low-density optically-thin plasmas (EUV and x-ray)
   * CHIANTI consolidated many atomic datasets from the literature
   * Goal was to have single, well-maintained, and freely-available database
   * Origins in Arcetri spectral code
@@ -151,7 +169,7 @@ Basic description before launching into details of the code
 * Develop Python in the open (GitHub) to encourage many contributors from the community
 * Relieve burden from CHIANTI developers (time and money in short supply), push towards Python adoption by solar community
 
-Organized around several core modules (others too but we will focus on these four)
+Organized around several core modules (others too but we will focus on these ~~four~~ three)
 ---
 
 # Development and Infrastructure
@@ -403,6 +421,7 @@ class: middle
 # Acknowledgement
 * CHIANTI team 
   * Helen Mason (Cambridge)
+  * Ken Dere (George Mason)
   * Giulio Del Zanna (Cambridge)
   * Peter Young (GSFC)
   * and many more...
