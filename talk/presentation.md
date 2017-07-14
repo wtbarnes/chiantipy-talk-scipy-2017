@@ -97,12 +97,14 @@ Cover first two points, flip to team picture, flip back and then...
 Progress from CHIANTI to ChiantiPy
 
 * CHIANTI
+  * High-temperature, low-density optically-thin plasmas (EUV and x-ray)
   * CHIANTI consolidated many atomic datasets from the literature
   * Goal was to have single, well-maintained, and freely-available database
+  * Origins in Arcetri spectral code
   * CHIANTI name not an acronym, but rather because of connection to Arcetri and Tuscany (mention Brunella)
   * What role it has played in interpreting data from instruments in solar physics, use in astrophysics
-  * Basically, make the point that CHIANTI has been an integral part of solar 
-
+  * Basically, make the point that CHIANTI has been an integral part of solar
+  * Papers(~15) have over 3000 combined citations (a lot for astro/solar)
 
 * ChiantiPy
   * Efforts of the CHIANTI team over the years have been focused on database and IDL code
@@ -181,12 +183,12 @@ PRs merged only when tests passed, informal review
 
 # Installation
 #### GitHub (recommended)
-```shell
+```bash
 $ git clone https://github.com/chianti-atomic/ChiantiPy.git
 $ cd ChiantiPy && python setup.py install
 ```
 #### PyPI: 
-```shell 
+```bash 
 $ pip install ChiantiPy
 ```
 #### conda/conda-forge
@@ -205,7 +207,20 @@ Suggestions welcome on how to deal with database as a dependency in conda/conda-
 * Ion &ndash; "building block" of database
 * Energy levels (`.elvlc`)
 * Transitions between levels (`.wgfa`)
-* *Line emission* from (primarily) 
+* *Line emission* from (primarily) collisions between ions and free electrons
+
+```python
+import numpy as np
+import ChiantiPy.core as ch
+T = np.logspace(4,8,100)
+n = 1e9
+fe5 = ch.ion('fe_5',temperature=T,
+             eDensity=n)
+fe5.Abundance
+fe5.Elvlc
+fe5.Wgfa
+```
+
 ]
 .col-4[
   <img src="img/filetree.png" width="275px">
@@ -225,25 +240,96 @@ Some equations, code examples, plots
 
 Basic physics of line emission
 ---
-# The `ion` Object
+class: middle
+
+* For a transition between levels `\(i\)` and `\(j\)` in ion `\(X_k\)`,
+
+$$ I = \frac{1}{4\pi}0.83\mathrm{Ab}(X)f\_{X,k}n\_j\frac{1}{N\_e}\frac{hc}{\lambda\_{ij}}\mathrm{EM} $$
+
+* Main concern is `\(n_j\)`, the level population as a function of temperature/density,
+
+$$ 
+\sum\_{k>j}n\_kA\_{kj} + n\_e\sum\_{i=j}n\_jC\_{ij} - \left(\sum\_{i<j}n\_jA{ji} + n\_e\sum\_{k=j}n\_jC\_{jk}\right) = 0 
+$$
+
+* **Source:** collisional exictation from lower levels, radiative decay from upper levels
+* **Sink:** excitation to higher levels, decay to lower levels
+
 ---
-# `Continuum` Module
-* Free-free (*bremsstrahlung*)
-* Free-bound
+
+```python
+fe5.populate()
+fe5.popPlot(top=50)
+plt.ylim([1e-3,0.5])
+```
+<img src="img/pop_plot_fe5.png" style="margin:auto;display:block;" width="650px">
 
 ???
+Code and figures, just use figure output from plotting routines in ChiantiPy to show that capability
+---
+class: middle
+
+```python
+import ChiantiPy.tools.filters as ch_filters
+wavelength = np.arange(2600,2900,0.1)
+fe5.spectrum(wavelength,filter=(ch_filters.lorentz,5))
+fe5.spectrumPlot(index=np.argmax(fe5.IoneqOne))
+plt.ylim([0,3.1e-27])
+```
+<img src="img/spec_plot_fe5.png" style="margin:auto;display:block;" width="550px">
+
+???
+Mention that `spectrum` module can be used to create composite spectrum along with continuum
+Combine line + continuum for many ions, transitions
+
+---
+# `Continuum` Module
+* **Free-free** (*bremsstrahlung*)
+
+\begin{align}
+\frac{dW}{dtdVd\lambda} =& \frac{c}{3m\_e}\left(\frac{\alpha h}{\pi}\right)^3\left(\frac{2\pi}{3m\_ek\_B}\right)^{1/2}\frac{Z^2}{\lambda^2T^{1/2}}\bar{g}\_{ff} \\\\
+&\times\exp{\left(-\frac{hc}{\lambda k\_BT}\right)},\quad [\mathrm{erg}\,\mathrm{cm}^3\,\mathrm{s}^{-1}\,\mathrm{\mathring{A}}^{-1}\,\mathrm{str}^{-1}]
+\end{align}
+
+* **Free-bound**
+
+\begin{align}
+\frac{dW}{dtdVd\lambda} =& \frac{1}{4\pi}\frac{2}{hk\_Bc^3m\_e\sqrt{2\pi k\_Bm\_e}}\frac{E^5}{T^{3/2}}\sum\_i\frac{\omega\_i}{\omega\_0}\sigma\_i^{bf} \\\\
+&\times\exp\left(-\frac{E - I\_i}{k_BT}\right),\quad [\mathrm{erg}\,\mathrm{cm}^3\,\mathrm{s}^{-1}\,\mathrm{\mathring{A}}^{-1}\,\mathrm{str}^{-1}]
+\end{align}
+
+???
+*Continuous* function of wavelength and temperature/density
+
 Physics of continuum radiation: free-free, free-bound
+
+In this equations, nearly everything is a constant
+* Important stuff is Gaunt factor, ionization potential, photoionization cross-section, statistical weights
+* ChiantiPy, using CHIANTI data, takes care of this for you
+* Approximations from literature in cases of GF and cross-section
 
 Code examples and plots
 
 Note this module has been redesigned in 0.7.1
+---
+class: middle
+
+```python
+wavelength = np.logspace(0,3,100)
+temperature = np.logspace(6,8.5,100)
+fe18continuum = ch.Continuum('fe_18',temperature)
+fe18continuum.calculate_free_free_emission(wavelength)
+fe18continuum.calculate_free_bound_emission(wavelength)
+```
+<img src="img/continuum.png" width="850px">
+
 ---
 # `ioneq` Module
 
 * Ion charge state (primarily) a function of *temperature*
 * Assuming *ionization equilibrium*, population fraction of ion `\(i\)` of element `\(X\)` given by,
 
-$$ I\_{i−1}X\_{i−1} + R\_iX\_{i+1} = I\_iX\_i + R\_{i−1}X\_i $$
+$$ I\_{i−1}f\_{X,i−1} + R\_if\_{X,i+1} = I\_if\_{X,i} + R\_{i−1}f\_{X,i} $$
 
 * **Sink:** ionization from lower levels, recombination from upper levels
 * **Source:** recbombination to lower levels, ionization to upper levels
@@ -270,17 +356,7 @@ ioneq_custom.calculate(temperature)
 Explain different curves
 
 Say where the data goes, e.g. Temperature and Ioneq attributes on the classes
----
-# `spectrum` Module
-
-???
-Combine line + continuum for many ions, transitions
-
-Only code plus figures, no equations
-
-Just explain composite of line emission from many ions+continuum
-
-Discuss different 
+ 
 ---
 # Applications
 
