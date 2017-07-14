@@ -27,7 +27,7 @@ class: impact
 ###### Built with [backslide](https://github.com/sinedied/backslide) and [Remark.js](https://github.com/gnab/remark)
 
 ???
-Thank organizers for giving me a talk
+Thank program committee for giving me a talk
 
 Thank donors for financial support to attend
 
@@ -64,6 +64,9 @@ solar physicist, intro to images
 class:full,middle,center
 background-image: url("img/sdo_aia_211.png")
 background-size: contain
+
+???
+Move through images quickly!(ish)
 ---
 class:full,middle,center
 background-image: url("img/iris_20150428_100823_0.gif")
@@ -72,6 +75,12 @@ background-size: contain
 class:full,middle,center
 background-image: url("img/hinode_eis_fe12_195.png")
 background-size: contain
+
+???
+Pause here
+
+But how do we interpret these observations? How can we know something about the 
+thermodynamics of the plasma we are observing? What are the observations telling us?
 ---
 class: middle,center
 # CHIANTI
